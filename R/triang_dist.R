@@ -1,4 +1,13 @@
+#-----------Me lo ha chivado la IA-----------
 
+#' @title Density function for the triangular distribution
+#' @param x Vector of quantiles.
+#' @param min Lower limit (a).
+#' @param max Upper limit (b).
+#' @param mode Mode (c).
+#' @return A numeric vector of density values.
+
+#-----------Me lo ha chivado la IA-----------
 #' @export
 dtriang <- function(x, min, max, mode) {
   if (any(min > max) || any(mode < min) || any(mode > max)) {#Añadimos any para que el código sea válido para vectres.
@@ -28,6 +37,18 @@ dtriang <- function(x, min, max, mode) {
   
   return(res)
 }
+
+#-----------Me lo ha chivado la IA-----------
+
+#' @title Distribution function for the triangular distribution
+#' @param q Vector of quantiles.
+#' @param min Lower limit (a).
+#' @param max Upper limit (b).
+#' @param mode Mode (c).
+#' @return A numeric vector of cumulative probabilities.
+
+#-----------Me lo ha chivado la IA-----------
+#' @export
 ptriang <- function(q, min, max, mode) {
   if (any(min > max) || any(mode < min) || any(mode > max)) {
     stop("Error. Reminder: min <= mode <= max") [cite: 50]
@@ -55,12 +76,23 @@ ptriang <- function(q, min, max, mode) {
   return(res)
 }
 
+#-----------Me lo ha chivado la IA-----------
 
+#' @title Quantile function for the triangular distribution
+#' @param p Vector of probabilities.
+#' @param min Lower limit (a).
+#' @param max Upper limit (b).
+#' @param mode Mode (c).
+#' @return A numeric vector of quantiles.
+
+#-----------Me lo ha chivado la IA-----------
+#' @export
 qtriang <- function(p, min, max, mode) {
 
   if (any(p < 0 | p > 1)) stop("Error: p must be between 0 and 1")
   if (any(min > max) || any(mode < min | mode > max)) {
     stop("Error: min <= mode <= max")
+  }
   
   n <- length(p)
   min  <- rep_len(min, n)
@@ -79,9 +111,18 @@ qtriang <- function(p, min, max, mode) {
   
   return(res)
   }
-}
   
-  
+#-----------Me lo ha chivado la IA-----------
+
+#' @title Random generation for the triangular distribution
+#' @param n Number of observations.
+#' @param min Lower limit (a).
+#' @param max Upper limit (b).
+#' @param mode Mode (c).
+#' @return A numeric vector of random deviates.
+
+#-----------Me lo ha chivado la IA-----------
+#' @export
 rtriang <- function(n, min, max, mode){
   res <- qtriang(runif(n), min, max, mode)
   return(res)
